@@ -37,6 +37,7 @@ export default function Settings() {
   const fetchUsers = async () => {
     try {
       const res = await fetch('/api/users');
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       const data = await res.json();
       if (Array.isArray(data)) setUsers(data);
     } catch (error) {
